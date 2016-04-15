@@ -1,27 +1,39 @@
-# CakePHP Application Skeleton
+# Cattle manager
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+#HERE IS SERVER
+Cattle manager is an Android application i code for my farm. 
 
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
+  - Add new cattle
+  - Manage weight, old, medical of cattle
+  - Manage cost of farm 
+  - Draw graph for cattle grow
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+Cattle manager use MVP and android clean architecture with 3 tier data, domain and presenter.
 
-## Installation
+Libraries and tools included:
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+ - Support libraries
+ - RecyclerViews and CardViews
+ - RxJava and RxAndroid
+ - Retrofit 2
+ - Dagger 2
+ - Butterknife
+ - Timber
+ - Picasso
+ - event bus
+ - Mockito
+ - MPAndroidChart
+# License
+    Copyright 2016 Crazy Farm.
 
-If Composer is installed globally, run
-```bash
-composer create-project --prefer-dist cakephp/app [app_name]
-```
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-You should now be able to visit the path to where you installed the app and see
-the setup traffic lights.
+       http://www.apache.org/licenses/LICENSE-2.0
 
-## Configuration
-
-Read and edit `config/app.php` and setup the 'Datasources' and any other
-configuration relevant for your application.
-"# cattle-manager-server" 
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License."# cattle-manager-server" 

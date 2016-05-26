@@ -110,4 +110,41 @@ class CattlesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    public function chart($id = null)
+    {
+    	$this->viewBuilder ()->layout ( false );
+    	$cattle = $this->Cattles->get($id, [
+    			'contain' => ['Users', 'Events', 'Photos', 'Weights']
+    	]);
+    	//chart1
+    	$s1 ;
+    	$tick1;
+    	$i =0;
+    	//chart2
+    	$s2;
+    	$tmp = $cattle->weights[0]->weight;
+    	if (!empty($cattle->weights)){
+    		foreach ($cattle->weights as $weights){
+    			//chart1
+    			$s1[$i] = $weights->weight;
+    			$tick1[$i] =date('d.m.Y', strtotime($weights->date));
+    			//chart2
+    			$s2[$i] = $weights->weight - $tmp;
+    			$tmp = $weights->weight;
+    			$i++;
+    		}
+    	}
+    	$this->set('s1', $s1);
+    	$this->set('_serialize', ['s1']);
+    	
+    	$this->set('s2', $s2);
+    	$this->set('_serialize', ['s2']);
+    	
+    	$this->set('tick1', $tick1);
+    	$this->set('_serialize', ['tick1']);
+    	
+    	$this->set('cattle', $cattle);
+    	$this->set('_serialize', ['cattle']);
+    }
+    
 }

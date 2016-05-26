@@ -1,4 +1,4 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<nav class="large-2 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Cattle'), ['action' => 'add']) ?></li>
@@ -12,7 +12,7 @@
         <li><?= $this->Html->link(__('New Weight'), ['controller' => 'Weights', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="cattles index large-9 medium-8 columns content">
+<div class="cattles index large-10 medium-8 columns content">
     <h3><?= __('Cattles') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -36,11 +36,11 @@
             <tr>
                 <td><?= $this->Number->format($cattle->id) ?></td>
                 <td><?= $this->Number->format($cattle->weight) ?></td>
-                <td><?= h($cattle->buy_date) ?></td>
+                <td><?= h(date('d.m.Y', strtotime($cattle->buy_date))) ?></td>
                 <td><?= $this->Number->format($cattle->month_old) ?></td>
                 <td><?= $this->Number->format($cattle->cost) ?></td>
                 <td><?= $this->Number->format($cattle->status) ?></td>
-                <td><?= h($cattle->sale_date) ?></td>
+                <td><?= h(!empty($cattle->sale_date)?date('d.m.Y', strtotime($cattle->sale_date)):"") ?></td>
                 <td><?= $this->Number->format($cattle->sale_price) ?></td>
                 <td><?= $this->Number->format($cattle->sale_status) ?></td>
                 <td><?= $cattle->has('user') ? $this->Html->link($cattle->user->name, ['controller' => 'Users', 'action' => 'view', $cattle->user->id]) : '' ?></td>

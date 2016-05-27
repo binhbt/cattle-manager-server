@@ -21,7 +21,7 @@ $(document).ready(function(){
         var ticks = <?php echo json_encode($tick1); ?>;
          
         plot1 = $.jqplot('chart1', [s1], {
-        	title: 'Biểu đồ cân nặng theo tháng', 
+        	title: 'Biểu đồ cân nặng đàn bò', 
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
             seriesDefaults:{
@@ -55,7 +55,7 @@ $(document).ready(function(){
         var ticks = <?php echo json_encode($tick1); ?>;
          
         plot2 = $.jqplot('chart2', [s2], {
-        	title: 'Biểu đồ tăng trưởng cân nặng theo tháng', 
+        	title: 'Biểu đồ tăng trưởng cân nặng đàn bò', 
             // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
             animate: !$.jqplot.use_excanvas,
             seriesDefaults:{
@@ -84,7 +84,7 @@ $(document).ready(function(){
     <div>
     <div><b>Biểu đồ cân nặng theo tháng<b></div>
     <div><span>X: Cân nặng(kg)</span></div>
-    <div><span>Y: Ngày cân</span></div>
+    <div><span>Y: Mã số</span></div>
     <div><span>You Clicked: </span><span id="info1">Nothing yet</span></div>
     <div id="chart1" style="margin-top:20px; margin-left:20px; width:100%;max-width:1280px;margin-right:auto;margin-left:auto; height:600px;"></div>
      </div>

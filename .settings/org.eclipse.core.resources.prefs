@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/Controller/CattlesController.php=UTF-8
 encoding//src/Template/Cattles/chart.ctp=UTF-8
+encoding//src/Template/Cattles/graph.ctp=UTF-8

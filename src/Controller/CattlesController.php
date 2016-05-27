@@ -19,7 +19,7 @@ class CattlesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'contain' => ['Users', 'Events', 'Photos', 'Weights']
         ];
         $cattles = $this->paginate($this->Cattles);
 
@@ -51,11 +51,20 @@ class CattlesController extends AppController
      */
     public function add()
     {
+    	$this->loadModel ( 'Weights' );
+    	$weight = $this->Weights->newEntity();
+    	
         $cattle = $this->Cattles->newEntity();
         if ($this->request->is('post')) {
             $cattle = $this->Cattles->patchEntity($cattle, $this->request->data);
             if ($this->Cattles->save($cattle)) {
                 $this->Flash->success(__('The cattle has been saved.'));
+                //Add new weight when buy new cow
+                $weight['cattle_id'] = $cattle['id'];
+                $weight['user_id'] = $cattle['user_id'];
+                $weight['name'] = 'Cân khi nhập về';
+                $weight['weight'] = $cattle['weight'];
+                $this->Weights->save($weight);
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The cattle could not be saved. Please, try again.'));
@@ -146,5 +155,53 @@ class CattlesController extends AppController
     	$this->set('cattle', $cattle);
     	$this->set('_serialize', ['cattle']);
     }
-    
+    public function graph()
+    {
+
+    	$this->viewBuilder ()->layout ( false );
+    	 
+    	$this->paginate = [
+    			'contain' => ['Users', 'Events', 'Photos', 'Weights']
+    	];
+    	$cattles = $this->paginate($this->Cattles);
+    	
+    	$this->set(compact('cattles'));
+    	$this->set('_serialize', ['cattles']);
+    	
+
+    	//chart1
+    	$s1 ;
+    	$tick1;
+    	$i =0;
+    	//chart2
+    	$s2;
+    	if (!empty($cattles)){
+    		foreach ($cattles as $cattle){
+    			//chart1
+    			$s1[$i] = $cattle['weight'];
+    			$tick1[$i] =$cattle['id'].'-'. $cattle['name'];
+    			if(!empty($cattle->weights)){
+    				$count = count($cattle->weights);
+    				if( $count >1){
+    					$s2[$i] = $cattle->weights[$count-1]->weight - $cattle->weights[$count-2]->weight;
+    				}else{
+    					$s2[$i] =0;
+    				}
+    				
+    			}else{
+    				$s2[$i] =0;
+    			}
+    			$i++;
+    		}
+    	}
+    	$this->set('s1', $s1);
+    	$this->set('_serialize', ['s1']);
+    	 
+    	$this->set('s2', $s2);
+    	$this->set('_serialize', ['s2']);
+    	 
+    	$this->set('tick1', $tick1);
+    	$this->set('_serialize', ['tick1']);
+    	 
+    }
 }

@@ -51,10 +51,16 @@ class WeightsController extends AppController
      */
     public function add()
     {
+    	$this->loadModel ( 'Cattles' );
+    	
         $weight = $this->Weights->newEntity();
         if ($this->request->is('post')) {
             $weight = $this->Weights->patchEntity($weight, $this->request->data);
             if ($this->Weights->save($weight)) {
+            	//Update weight for current cattle
+            	$cattle = $this->Cattles->get ($weight['cattle_id']);
+            	$cattle['weight'] = $weight['weight'];
+            	$this->Cattles->save($cattle);
                 $this->Flash->success(__('The weight has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {

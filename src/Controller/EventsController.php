@@ -51,19 +51,37 @@ class EventsController extends AppController
      */
     public function add()
     {
-        $event = $this->Events->newEntity();
+    	$event = $this->Events->newEntity();
         if ($this->request->is('post')) {
-            $event = $this->Events->patchEntity($event, $this->request->data);
-            if ($this->Events->save($event)) {
+            
+            $ok = true;
+            if (!empty($this->request->data['cattle_id'])){
+            	foreach ($this->request->data['cattle_id'] as $cattle_id){
+            		$event = $this->Events->newEntity();
+            		$event = $this->Events->patchEntity($event, $this->request->data);
+            		$event['cattle_id'] = $cattle_id;
+            		if (!$this->Events->save($event)) {
+            			$ok = false;
+            		}
+            	}
+            }
+            
+            if ($ok) {
                 $this->Flash->success(__('The event has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The event could not be saved. Please, try again.'));
             }
+            
         }
-        $cattles = $this->Events->Cattles->find('list', ['limit' => 200]);
+        
+        $cattles = $this->Events->Cattles->find('all');
+        $cats;
+        foreach ($cattles as $cattle){
+        	$cats[$cattle['id']] = $cattle['id'].'-'.$cattle['name'];
+        }
         $users = $this->Events->Users->find('list', ['limit' => 200]);
-        $this->set(compact('event', 'cattles', 'users'));
+        $this->set(compact('event', 'cattles', 'users', 'cats'));
         $this->set('_serialize', ['event']);
     }
 

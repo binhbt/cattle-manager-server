@@ -20,7 +20,7 @@
         <legend><?= __('Edit Event') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('cattle_id', ['options' => $cattles]);
+            echo $this->Form->input('cattle_id', ['options' => $cattles ]);
             echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
             echo $this->Form->input('description');
             echo $this->Form->input('cost');

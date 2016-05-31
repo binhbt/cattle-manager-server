@@ -14,7 +14,7 @@
         <legend><?= __('Add Event') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('cattle_id', ['options' => $cattles]);
+            echo $this->Form->input('cattle_id', ['options' => $cats, 'multiple'=>'multiple', 'id'=>'cattle_id' ]);
             echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
             echo $this->Form->input('description');
             echo $this->Form->input('cost');
@@ -25,3 +25,10 @@
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+                        <script  type="text/javascript">
+                //<![CDATA[
+$(document).ready(function(){
+	$('#cattle_id').multiSelect({});
+});
+                //]]>
+                </script>

@@ -32,6 +32,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+                <?php echo $this->Html->script('http://loudev.com/js/jquery.js'); ?>
+                <?php echo $this->Html->script('/lou-multi-select/js/jquery.multi-select.js'); ?>
+            <link rel="stylesheet" type="text/css" href="/cattle_manager/lou-multi-select/css/multi-select.css" />
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
@@ -41,10 +44,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
         <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+            <ul class="left">
+                <li><?= $this->Html->link(__('Cattles'), ['controller' => 'Cattles', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Weights'), ['controller' => 'Weights', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Events'), ['controller' => 'Events', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Costs'), ['controller' => 'Costs', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Graph'), ['controller' => 'Cattles', 'action' => 'graph']) ?></li>
             </ul>
+\
         </div>
     </nav>
     <?= $this->Flash->render() ?>

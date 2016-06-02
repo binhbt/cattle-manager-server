@@ -19,7 +19,11 @@ class CostsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'contain' => ['Users'],
+        		'limit' => 10000,
+        		'conditions' => [
+        				'Costs.status' => 0
+        		]
         ];
         $costs = $this->paginate($this->Costs);
 
@@ -103,7 +107,8 @@ class CostsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $cost = $this->Costs->get($id);
-        if ($this->Costs->delete($cost)) {
+        $cost['status'] =-1;
+        if ($this->Costs->save($cost)) {
             $this->Flash->success(__('The cost has been deleted.'));
         } else {
             $this->Flash->error(__('The cost could not be deleted. Please, try again.'));

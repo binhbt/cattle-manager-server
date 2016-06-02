@@ -19,7 +19,11 @@ class PhotosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Cattles']
+            'contain' => ['Cattles'],
+        		'limit' => 10000,
+        		'conditions' => [
+        				'Photos.status' => 0
+        		]
         ];
         $photos = $this->paginate($this->Photos);
 
@@ -103,7 +107,8 @@ class PhotosController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $photo = $this->Photos->get($id);
-        if ($this->Photos->delete($photo)) {
+        $photo['status'] = -1;
+        if ($this->Photos->save($photo)) {
             $this->Flash->success(__('The photo has been deleted.'));
         } else {
             $this->Flash->error(__('The photo could not be deleted. Please, try again.'));

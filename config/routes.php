@@ -50,12 +50,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    //$routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/', ['controller' => 'Cattles', 'action' => 'index']);
     $routes->connect('/api/v1/:action/*', ['controller' => 'Api', 'action' => ':action']);
     $routes->connect('/api/v1/', ['controller' => 'Api', 'action' => 'index']);
     $routes->connect('/api/v1/cattle/add', ['controller' => 'Api', 'action' => 'addCattle']);

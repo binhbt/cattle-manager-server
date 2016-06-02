@@ -24,7 +24,9 @@
             </tr>
         </thead>
         <tbody>
+                <?php $totalCost =0;  ?>
             <?php foreach ($events as $event): ?>
+                        <?php $totalCost+=$event->cost; ?>
             <tr>
                 <td><?= $this->Number->format($event->id) ?></td>
                 <td><?= $event->has('cattle') ? $this->Html->link($event->cattle->id, ['controller' => 'Cattles', 'action' => 'view', $event->cattle->id]) : '' ?></td>
@@ -50,4 +52,5 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+        <p><b>Total events cost: <?= $this->Number->format($totalCost)  ?></b></p>
 </div>

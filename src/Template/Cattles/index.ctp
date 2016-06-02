@@ -32,7 +32,9 @@
             </tr>
         </thead>
         <tbody>
+        <?php $totalCost =0;  ?>
             <?php foreach ($cattles as $cattle): ?>
+            <?php $totalCost+=$cattle->cost; ?>
             <tr>
                 <td><?= $this->Number->format($cattle->id) ?></td>
                 <td><?= $this->Number->format($cattle->weight) ?></td>
@@ -62,4 +64,5 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+    <p><b>Total cattles cost: <?= $this->Number->format($totalCost)  ?></b></p>
 </div>

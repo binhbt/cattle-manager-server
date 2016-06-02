@@ -92,7 +92,9 @@
                 <th><?= __('Status') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
+                            <?php $totalCost =0;  ?>
             <?php foreach ($cattle->events as $events): ?>
+                        <?php $totalCost+=$events->cost; ?>
             <tr>
                 <td><?= h($events->id) ?></td>
                 <td><?= h($events->name) ?></td>
@@ -112,6 +114,7 @@
             <?php endforeach; ?>
         </table>
         <?php endif; ?>
+           <p><b>Total events cost: <?= $this->Number->format($totalCost)  ?></b></p>
     </div>
     <div class="related">
         <h4><?= __('Related Photos') ?></h4>

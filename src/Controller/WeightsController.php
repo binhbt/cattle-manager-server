@@ -19,7 +19,11 @@ class WeightsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Cattles', 'Users']
+            'contain' => ['Cattles', 'Users'],
+        		'limit' => 10000,
+        		'conditions' => [
+        				'Weights.status' => 0
+        		]
         ];
         $weights = $this->paginate($this->Weights);
 
@@ -111,7 +115,8 @@ class WeightsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $weight = $this->Weights->get($id);
-        if ($this->Weights->delete($weight)) {
+        $weight['status'] =-1;
+        if ($this->Weights->save($weight)) {
             $this->Flash->success(__('The weight has been deleted.'));
         } else {
             $this->Flash->error(__('The weight could not be deleted. Please, try again.'));

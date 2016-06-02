@@ -51,7 +51,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><?= $this->Html->link(__('Costs'), ['controller' => 'Costs', 'action' => 'index']) ?></li>
                 <li><?= $this->Html->link(__('Graph'), ['controller' => 'Cattles', 'action' => 'graph']) ?></li>
             </ul>
-\
         </div>
     </nav>
     <?= $this->Flash->render() ?>

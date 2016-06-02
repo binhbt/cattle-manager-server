@@ -89,9 +89,9 @@ $(document).ready(function(){
     <div id="chart1" style="margin-top:20px; margin-left:20px; width:100%;max-width:1280px;margin-right:auto;margin-left:auto; height:600px;"></div>
      </div>
     <div style="margin-top:100px;">
-    <div><b>Biểu đồ tăng trưởng cân nặng theo tháng<b></div>
+    <div><b>Biểu đồ tăng trưởng cân nặng đàn bò lần cân gần nhất<b></div>
     <div><span>X: Cân nặng tăng lên so với lần cân trước(kg)</span></div>
-    <div><span>Y: Ngày cân</span></div>
+    <div><span>Y: Mã số</span></div>
     <div><span>You Clicked: </span><span id="info2">Nothing yet</span></div>
     <div id="chart2" style="margin-top:20px; margin-left:20px; width:100%;max-width:1280px;margin-right:auto;margin-left:auto; height:300px;"></div>
      </div>

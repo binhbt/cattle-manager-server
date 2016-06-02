@@ -21,7 +21,9 @@
             </tr>
         </thead>
         <tbody>
+                <?php $totalCost =0;  ?>
             <?php foreach ($costs as $cost): ?>
+                        <?php $totalCost+=$cost->cost; ?>
             <tr>
                 <td><?= $this->Number->format($cost->id) ?></td>
                 <td><?= $this->Number->format($cost->cost) ?></td>
@@ -46,4 +48,5 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+            <p><b>Total cost: <?= $this->Number->format($totalCost)  ?></b></p>
 </div>

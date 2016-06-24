@@ -18,9 +18,11 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('name') ?></th>
+                <th><?= $this->Paginator->sort('description') ?></th>
+                <th><?= $this->Paginator->sort('blood') ?></th>
                 <th><?= $this->Paginator->sort('weight') ?></th>
                 <th><?= $this->Paginator->sort('buy_date') ?></th>
-                <th><?= $this->Paginator->sort('month_old') ?></th>
                 <th><?= $this->Paginator->sort('cost') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -31,9 +33,11 @@
             <?php $totalCost+=$cattle->cost; ?>
             <tr>
                 <td><?= $this->Number->format($cattle->id) ?></td>
+                <td><?= h($cattle->name) ?></td>
+                <td><?= h($cattle->description) ?></td>
+                <td><?= h($cattle->blood) ?></td>
                 <td><?= $this->Number->format($cattle->weight) ?></td>
                 <td><?= h(date('d.m.Y', strtotime($cattle->buy_date))) ?></td>
-                <td><?= $this->Number->format($cattle->month_old) ?></td>
                 <td><?= $this->Number->format($cattle->cost) ?></td>
                 <td><?= $this->Number->format($cattle->status) ?></td>
                 <td class="actions">

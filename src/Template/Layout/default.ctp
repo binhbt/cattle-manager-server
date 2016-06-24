@@ -51,6 +51,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><?= $this->Html->link(__('Costs'), ['controller' => 'Costs', 'action' => 'index']) ?></li>
                 <li><?= $this->Html->link(__('Graph'), ['controller' => 'Cattles', 'action' => 'graph']) ?></li>
             </ul>
+            <ul class="right">
+                <?php if (!is_null($this->request->session()->read('Auth.User.email'))){ ?>
+                                <li><a target="_blank" href="users/logout">Logout</a></li>
+				<?php } else { ?>
+								<li><a target="_blank" href="users/login">Login</a></li>
+				<?php } ?>
+
+            </ul>
         </div>
     </nav>
     <?= $this->Flash->render() ?>

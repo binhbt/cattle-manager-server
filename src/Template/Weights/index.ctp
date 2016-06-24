@@ -15,11 +15,8 @@
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('cattle_id') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
                 <th><?= $this->Paginator->sort('weight') ?></th>
                 <th><?= $this->Paginator->sort('date') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
-                <th><?= $this->Paginator->sort('status') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -28,11 +25,8 @@
             <tr>
                 <td><?= $this->Number->format($weight->id) ?></td>
                 <td><?= $weight->has('cattle') ? $this->Html->link($weight->cattle->id, ['controller' => 'Cattles', 'action' => 'view', $weight->cattle->id]) : '' ?></td>
-                <td><?= $weight->has('user') ? $this->Html->link($weight->user->name, ['controller' => 'Users', 'action' => 'view', $weight->user->id]) : '' ?></td>
                 <td><?= $this->Number->format($weight->weight) ?></td>
                 <td><?= h($weight->date) ?></td>
-                <td><?= h($weight->modified) ?></td>
-                <td><?= $this->Number->format($weight->status) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $weight->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $weight->id]) ?>

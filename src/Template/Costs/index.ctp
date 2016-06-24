@@ -13,10 +13,8 @@
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('cost') ?></th>
-                <th><?= $this->Paginator->sort('date') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
+                <th><?= $this->Paginator->sort('name') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
-                <th><?= $this->Paginator->sort('status') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -27,10 +25,8 @@
             <tr>
                 <td><?= $this->Number->format($cost->id) ?></td>
                 <td><?= $this->Number->format($cost->cost) ?></td>
-                <td><?= h($cost->date) ?></td>
-                <td><?= $cost->has('user') ? $this->Html->link($cost->user->name, ['controller' => 'Users', 'action' => 'view', $cost->user->id]) : '' ?></td>
+                <td><?= h($cost->name) ?></td>
                 <td><?= h($cost->modified) ?></td>
-                <td><?= $this->Number->format($cost->status) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $cost->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cost->id]) ?>

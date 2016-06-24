@@ -22,12 +22,6 @@
                 <th><?= $this->Paginator->sort('buy_date') ?></th>
                 <th><?= $this->Paginator->sort('month_old') ?></th>
                 <th><?= $this->Paginator->sort('cost') ?></th>
-                <th><?= $this->Paginator->sort('status') ?></th>
-                <th><?= $this->Paginator->sort('sale_date') ?></th>
-                <th><?= $this->Paginator->sort('sale_price') ?></th>
-                <th><?= $this->Paginator->sort('sale_status') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -42,11 +36,6 @@
                 <td><?= $this->Number->format($cattle->month_old) ?></td>
                 <td><?= $this->Number->format($cattle->cost) ?></td>
                 <td><?= $this->Number->format($cattle->status) ?></td>
-                <td><?= h(!empty($cattle->sale_date)?date('d.m.Y', strtotime($cattle->sale_date)):"") ?></td>
-                <td><?= $this->Number->format($cattle->sale_price) ?></td>
-                <td><?= $this->Number->format($cattle->sale_status) ?></td>
-                <td><?= $cattle->has('user') ? $this->Html->link($cattle->user->name, ['controller' => 'Users', 'action' => 'view', $cattle->user->id]) : '' ?></td>
-                <td><?= h($cattle->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $cattle->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cattle->id]) ?>

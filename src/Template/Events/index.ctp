@@ -14,12 +14,10 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('name') ?></th>
                 <th><?= $this->Paginator->sort('cattle_id') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
                 <th><?= $this->Paginator->sort('cost') ?></th>
-                <th><?= $this->Paginator->sort('date') ?></th>
                 <th><?= $this->Paginator->sort('modified') ?></th>
-                <th><?= $this->Paginator->sort('status') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,12 +27,10 @@
                         <?php $totalCost+=$event->cost; ?>
             <tr>
                 <td><?= $this->Number->format($event->id) ?></td>
+                <td><?= $this->Number->format($event->name) ?></td>
                 <td><?= $event->has('cattle') ? $this->Html->link($event->cattle->id, ['controller' => 'Cattles', 'action' => 'view', $event->cattle->id]) : '' ?></td>
-                <td><?= $event->has('user') ? $this->Html->link($event->user->name, ['controller' => 'Users', 'action' => 'view', $event->user->id]) : '' ?></td>
                 <td><?= $this->Number->format($event->cost) ?></td>
-                <td><?= h($event->date) ?></td>
                 <td><?= h($event->modified) ?></td>
-                <td><?= $this->Number->format($event->status) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $event->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $event->id]) ?>
